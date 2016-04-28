@@ -2,7 +2,23 @@
 
 This little test shows how using a 
 [bridged method](https://docs.oracle.com/javase/tutorial/java/generics/bridgeMethods.html) in combination with
-the Java 8 ```-parameters``` option causes a failure:
+the Java 8 ```-parameters``` option causes a failure. This test works when using a version of JDBI upgraded to use:
+
+```
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.2.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>5.0.4</version>
+        </dependency>
+```
+
+How to show the failure...
 
 ```
 bash$ mvn clean test
