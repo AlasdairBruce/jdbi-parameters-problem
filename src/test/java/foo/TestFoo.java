@@ -36,6 +36,11 @@ public class TestFoo {
     @Test
     public void testFoo() {
         DBI dbi = new DBI(postgres.getTransactionDataSource());
-        dbi.onDemand(Foo.class);
+        try {
+            dbi.onDemand(Foo.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 }
