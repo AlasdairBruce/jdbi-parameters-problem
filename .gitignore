@@ -1,24 +1,5 @@
 *.class
-*.versionsBackup
-target
-install
-dependency-reduced-pom.xml
-*search-places*json
-.settings
-.classpath
-.project
-testdata
-.idea
-*.iml
-
-# Package Files #
 *.jar
-*.war
-*.ear
-/gradenator/
-
-# Maven release files
-pom.xml.next
-pom.xml.releaseBackup
-pom.xml.tag
-release.properties
+target
+*.iml
+.idea
