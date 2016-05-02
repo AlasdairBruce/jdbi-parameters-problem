@@ -40,7 +40,9 @@ bash$ mvn clean test
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.46 sec - in foo.TestFoo
 ```
 
-This test works when using a locally built version of JDBI upgraded to include (shaded-ly) the following dependencies:
+I can make the failing test work again by using a locally built
+version of JDBI upgraded to include (shaded-ly) the following
+dependencies:
 
 ```
         <dependency>
