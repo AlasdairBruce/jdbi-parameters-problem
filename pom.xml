@@ -3,21 +3,28 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>com.groupon.jtier</groupId>
-    <artifactId>jtier-basepom</artifactId>
-    <version>0.14.8</version>
-  </parent>
-
   <groupId>foo</groupId>
   <artifactId>foo</artifactId>
   <version>1</version>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
   <profiles>
     <profile>
       <activation>
         <property>
-          <name>without-parameters</name>
+          <name>with-parameters</name>
         </property>
       </activation>
       <build>
@@ -27,8 +34,7 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <configuration>
               <compilerArgs>
-                <arg>-Xlint:deprecation</arg>
-                <arg>-Xlint:unchecked</arg>
+                <arg>-parameters</arg>
               </compilerArgs>
             </configuration>
           </plugin>
@@ -44,14 +50,9 @@
       <version>2.63.1</version>
     </dependency>
     <dependency>
-      <groupId>com.groupon.jtier</groupId>
-      <artifactId>jtier-daas-postgres-testing</artifactId>
-      <version>0.7.0</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
+      <version>4.12</version>
     </dependency>
   </dependencies>
 

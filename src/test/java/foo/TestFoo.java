@@ -1,7 +1,5 @@
 package foo;
 
-import com.groupon.jtier.daas.postgres.PostgresRule;
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.skife.jdbi.v2.DBI;
@@ -11,9 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestFoo {
-
-    @Rule
-    public PostgresRule postgres = PostgresRule.withNewDatabase();
 
     interface IFoo<T> {
         int getOne();
@@ -35,7 +30,7 @@ public class TestFoo {
 
     @Test
     public void testFoo() {
-        DBI dbi = new DBI(postgres.getTransactionDataSource());
+        DBI dbi = new DBI("jdbc:h2:mem:test");
         try {
             dbi.onDemand(Foo.class);
         } catch (Exception e) {

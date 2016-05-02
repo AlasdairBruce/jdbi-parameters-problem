@@ -2,26 +2,12 @@
 
 This little test shows how using a 
 [bridged method](https://docs.oracle.com/javase/tutorial/java/generics/bridgeMethods.html) in combination with
-the Java 8 ```-parameters``` option causes a failure. This test works when using a version of JDBI upgraded to use:
-
-```
-        <dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib</artifactId>
-            <version>3.2.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.ow2.asm</groupId>
-            <artifactId>asm</artifactId>
-            <version>5.0.4</version>
-        </dependency>
-```
+the Java 8 ```-parameters``` option causes a failure.
 
 How to show the failure...
 
 ```
-bash$ mvn clean test
+bash$ mvn -Dwith-parameters clean test
 ...
 ...
 java.lang.RuntimeException
@@ -48,8 +34,24 @@ The failing code (decompiled) is:
 Running the same test, but omitting the -parameters command line argument to the java compiler works just fine:
 
 ```
-bash$ mvn -Dwithout-parameters clean test
+bash$ mvn clean test
 ...
 ...
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.46 sec - in foo.TestFoo
+```
+
+This test works when using a locally built version of JDBI upgraded to include (shaded-ly) the following dependencies:
+
+```
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.2.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>5.0.4</version>
+        </dependency>
 ```
